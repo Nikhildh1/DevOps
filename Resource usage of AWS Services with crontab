@@ -1,0 +1,48 @@
+  #!/bin/bash
+	##############################
+	# Author: Nikhil Dhawan
+	# Date: 17 July 2024
+	#
+	# Version: v1
+	#
+	# This script will report aws resource usage
+	##############################
+	
+	set -x
+	
+	# AWS CLI Commands: awsclireference
+	
+	# List S3 Buckets
+	aws s3 ls > s3_buckets.txt
+	
+	# List EC2 Instances
+	aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId' > ec2_instances.txt
+	
+	# List lambda
+	aws lambda list-functions > lambdas.txt
+	
+	# List IAM Users
+	aws iam list users > ism_users.txt
+	
+	# To add a crontab
+
+	# * * * * * /path/to/your/script.sh
+	
+	# The five asterisks (* * * * *) represent the schedule:
+		# Minute (0-59)
+		# Hour (0-23)
+		# Day of the month (1-31)
+		# Month (1-12)
+		# Day of the week (0-7, where 0 and 7 represent Sunday)
+	
+	# Open the Crontab for editing
+
+  # crontab -e
+	
+	# To run every day at 6AM
+	
+	# 0 6 * * * /path/to/your/report_aws_resource_tracler.sh
+	
+	# Save and exit
+
+	# contab -l : After adding the cron job, you can verify that it was added correctly by listing the crontab entries
