@@ -37,7 +37,7 @@
 	
 	# Open the Crontab for editing
 
-  # crontab -e
+ 	# crontab -e
 	
 	# To run every day at 6AM
 	
